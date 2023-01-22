@@ -1,0 +1,54 @@
+<form method="post" data-oc-toggle="ajax" data-oc-load="{{ cart }}" data-oc-target="#header-cart">
+  <div class="product-thumb">
+    <div class="image"><a href="{{ href }}"><img src="{{ thumb }}" alt="{{ name }}" title="{{ name }}" class="img-fluid"/></a></div>
+    
+    {% if label_1 %}
+      <span class="label label-1">{{label_1}}</span>
+    {% endif %}
+    {% if label_2 %}
+      <span class="label label-2">{{label_2}}</span>
+    {% endif %}
+    {% if percent %}
+      <span class="discount">{{percent}}</span>
+    {% endif %}
+
+    <div class="content">
+      <div class="description">
+        <div class="rating">
+            {% for i in 1..5 %}
+              {% if rating < i %}
+                <span class="fa-stack"><i class="fa-regular fa-star fa-stack-1x"></i></span>
+              {% else %}
+                <span class="fa-stack"><i class="fa-solid fa-star fa-stack-1x"></i><i class="fa-regular fa-star fa-stack-1x"></i></span>
+              {% endif %}
+            {% endfor %}
+          </div>
+        <h4><a href="{{ href }}">{{ name }}</a></h4>
+        <p class="short-desc">{{ description }}</p>
+
+        {% if price %}
+          <div class="price">
+            {% if not special %}
+              <span class="price-new">{{ price }}</span>
+            {% else %}
+              <span class="price-new">{{ special }}</span> <span class="price-old">{{ price }}</span>
+            {% endif %}
+            {% if tax %}
+              <span class="price-tax">{{ text_tax }} {{ tax }}</span>
+            {% endif %}
+          </div>
+        {% endif %}
+       
+      </div>
+	 
+      <div class="text-center">
+        <button class="btn addwishlist" type="submit" formaction="{{ add_to_wishlist }}" data-bs-toggle="tooltip" ><i class="fa-solid fa-heart"></i></button>
+        <button class="btn btn-dark btn-cart" type="submit" formaction="{{ add_to_cart }}" data-bs-toggle="tooltip" ><i class="fa-solid fa-shopping-cart"></i> {{ button_cart }}</button>
+        {# <button class="btn btn-danger" type="submit" formaction="{{ add_to_compare }}" data-bs-toggle="tooltip"><i class="fa-solid fa-arrow-right-arrow-left"></i></button> #}
+      </div>
+    </div>
+    <input type="hidden" name="product_id" value="{{ product_id }}"/>
+    <input type="hidden" name="quantity" value="{{ minimum }}"/>
+  </div>
+</form>
+

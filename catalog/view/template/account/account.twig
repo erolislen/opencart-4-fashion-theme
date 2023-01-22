@@ -1,0 +1,169 @@
+{{ header }}
+<div id="account-account" class="container">
+  <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+      <li class="breadcrumb-item"><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+  </ul>
+  {% if success %}
+    <div class="alert alert-success alert-dismissible"><i class="fa-solid fa-circle-check"></i> {{ success }}</div>
+  {% endif %}
+  <div class="row">{{ column_left }}
+    <div id="content" class="col">{{ content_top }}
+      <h2>{{ text_my_account }}</h2>
+
+      <div class="row">
+          <div class="col-md-3">
+            <div class="panel panel-default text-center dashboard-cart" style="background:#76B041;">
+              <div class="panel-body">
+                <i class="fa fa-user fa-4x dashboard-icon"></i>
+              </div>
+              <div class="panel-footer dashboard-cart-footer"><a href="{{ edit }}" class="dashboard-text">{{ text_edit }}</a></div>
+            </div>
+        </div>
+		<div class="col-md-3">
+            <div class="panel panel-default text-center dashboard-cart" style="background:#a862ea;">
+              <div class="panel-body">
+                <i class="fa fa-key fa-4x dashboard-icon"></i>
+              </div>
+              <div class="panel-footer dashboard-cart-footer"><a href="{{ password }}" class="dashboard-text">{{ text_password }}</a></div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default text-center dashboard-cart" style="background:#00B2CA;">
+              <div class="panel-body">
+                <i class="fa fa-address-book fa-4x dashboard-icon"></i>
+              </div>
+              <div class="panel-footer dashboard-cart-footer"><a href="{{ address }}" class="dashboard-text">{{ text_address }}</a></div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default text-center dashboard-cart" style="background:#42113C;">
+              <div class="panel-body">
+                <i class="fa fa-shopping-basket fa-4x dashboard-icon"></i>
+              </div>
+              <div class="panel-footer dashboard-cart-footer"><a href="{{ payment_method }}" class="dashboard-text">{{ text_payment_method }}</a></div>
+            </div>
+        </div>	  
+        <div class="col-md-3">
+            <div class="panel panel-default text-center dashboard-cart" style="background:#ff4d4d;">
+              <div class="panel-body">
+                <i class="fa fa-shopping-basket fa-4x dashboard-icon"></i>
+              </div>
+              <div class="panel-footer dashboard-cart-footer"><a href="{{ wishlist }}" class="dashboard-text">{{ text_wishlist }}</a></div>
+            </div>
+        </div>	  
+      </div>
+     
+      <h2>
+        {{ text_my_orders }}
+      </h2>
+      <div class="row">
+
+       <div class="col-md-3">
+            <div class="panel panel-default text-center dashboard-cart" style="background:#1D4E89;">
+              <div class="panel-body">
+                <i class="fa fa-cart-plus fa-4x dashboard-icon"></i>
+              </div>
+              <div class="panel-footer dashboard-cart-footer"><a href="{{ order }}" class="dashboard-text">{{ text_order }}</a></div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default text-center dashboard-cart" style="background:#FFC914;">
+              <div class="panel-body">
+                <i class="fa fa-file fa-4x dashboard-icon"></i>
+              </div>
+              <div class="panel-footer dashboard-cart-footer"><a href="{{ download }}" class="dashboard-text">{{ text_download }}</a></div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default text-center dashboard-cart" style="background:#6A0136;">
+              <div class="panel-body">
+                <i class="fa fa-file fa-4x dashboard-icon"></i>
+              </div>
+              <div class="panel-footer dashboard-cart-footer"><a href="{{ subscription }}" class="dashboard-text">{{ text_subscription }}</a></div>
+            </div>
+        </div>
+
+        {% if reward %}
+           <div class="col-md-3">
+            <div class="panel panel-default text-center dashboard-cart" style="background:#618B25;">
+              <div class="panel-body">
+                <i class="fa fa-check-square fa-4x dashboard-icon"></i>
+              </div>
+              <div class="panel-footer dashboard-cart-footer"><a href="{{ reward }}" class="dashboard-text">{{ text_reward }}</a></div>
+            </div>
+        </div>
+        {% endif %}
+         <div class="col-md-3">
+            <div class="panel panel-default text-center dashboard-cart" style="background:#42113C;">
+              <div class="panel-body">
+                <i class="fa fa-undo fa-4x dashboard-icon"></i>
+              </div>
+              <div class="panel-footer dashboard-cart-footer"><a href="{{ return }}" class="dashboard-text">{{ text_return }}</a></div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="panel panel-default text-center dashboard-cart" style="background:#C05746;">
+              <div class="panel-body">
+                <i class="fa fa-spinner fa-4x dashboard-icon"></i>
+              </div>
+              <div class="panel-footer dashboard-cart-footer"><a href="{{ transaction }}" class="dashboard-text">{{ text_transaction }}</a></div>
+            </div>
+        </div>
+      </div>
+      {% if affiliate %}
+        <h2>
+          {{ text_my_affiliate }}
+        </h2>
+        <div class="row">
+          {% if not tracking %}
+             <div class="col-md-3">
+            <div class="panel panel-default text-center dashboard-cart" style="background:#4d7aff;">
+              <div class="panel-body">
+                <i class="fa fa-credit-card-alt fa-4x dashboard-icon"></i>
+              </div>
+              <div class="panel-footer dashboard-cart-footer"><a href="{{ affiliate }}" class="dashboard-text">{{ text_affiliate_add }}</a></div>
+            </div>
+        </div>
+          {% else %}
+
+          <div class="col-md-3">
+            <div class="panel panel-default text-center dashboard-cart" style="background:#BFAB25;">
+              <div class="panel-body">
+                <i class="fa fa-rocket fa-4x dashboard-icon"></i>
+              </div>
+              <div class="panel-footer dashboard-cart-footer"><a href="{{ affiliate }}" class="dashboard-text">{{ text_affiliate_edit }}</a></div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="panel panel-default text-center dashboard-cart" style="background:#026C7C;">
+              <div class="panel-body">
+                <i class="fa fa-paper-plane fa-4x dashboard-icon"></i>
+              </div>
+              <div class="panel-footer dashboard-cart-footer"><a href="{{ tracking }}" class="dashboard-text">{{ text_tracking }}</a></div>
+            </div>
+        </div>
+          
+          {% endif %}
+        </div>
+      {% endif %}
+      <h2>
+        {{ text_my_newsletter }}
+      </h2>
+      <div class="row">
+         <div class="col-md-3">
+            <div class="panel panel-default text-center dashboard-cart" style="background:#6A0136;">
+              <div class="panel-body">
+                <i class="fa fa-envelope fa-4x dashboard-icon"></i>
+              </div>
+              <div class="panel-footer dashboard-cart-footer"><a href="{{ newsletter }}" class="dashboard-text">{{ text_newsletter }}</a></div>
+            </div>
+        </div>
+      </div>
+      {{ content_bottom }}</div>
+    {{ column_right }}</div>
+</div>
+{{ footer }}

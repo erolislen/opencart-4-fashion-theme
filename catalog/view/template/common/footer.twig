@@ -1,0 +1,142 @@
+</main>
+<footer>
+  <div class="container">
+    <div class="row">
+	
+      {% if informations %}
+        <div class="f-links col-md-3 col-sm-6 col-3 d-flex justify-content-center">
+			<div>
+			  <h5>{{ text_information }}</h5>
+			  <div class="title-divider"></div>
+			  <ul class="list-unstyled">
+				{% for information in informations %}
+				  <li><a href="{{ information.href }}"><i class="fas fa-angle-right"></i> {{ information.title }}</a></li>
+				{% endfor %}
+			  </ul>
+			</div>
+        </div>
+      {% endif %}
+	  
+      <div class="f-links col-md-3 col-sm-6 col-3 d-flex justify-content-center">
+		  <div>
+			<h5>{{ text_service }}</h5>
+			<div class="title-divider"></div>
+			<ul class="list-unstyled">
+			  <li><a href="{{ contact }}"><i class="fas fa-angle-right"></i> {{ text_contact }}</a></li>
+			  <li><a href="{{ return }}"><i class="fas fa-angle-right"></i> {{ text_return }}</a></li>
+			  {% if gdpr %}
+				<li><a href="{{ gdpr }}"><i class="fas fa-angle-right"></i> {{ text_gdpr }}</a></li>
+			  {% endif %}
+			  <li><a href="{{ sitemap }}"><i class="fas fa-angle-right"></i> {{ text_sitemap }}</a></li>
+			</ul>
+		  </div>
+      </div>
+	  
+      <div class="f-links col-md-3 col-sm-6 col-3 d-flex justify-content-center">
+		  <div>
+			<h5>{{ text_extra }}</h5>
+			<div class="title-divider"></div>
+			<ul class="list-unstyled">
+			  <li><a href="{{ manufacturer }}"><i class="fas fa-angle-right"></i> {{ text_manufacturer }}</a></li>
+			  <li><a href="{{ voucher }}"><i class="fas fa-angle-right"></i> {{ text_voucher }}</a></li>
+			  {% if affiliate %}
+				<li><a href="{{ affiliate }}"><i class="fas fa-angle-right"></i> {{ text_affiliate }}</a></li>
+			  {% endif %}
+			  <li><a href="{{ special }}"><i class="fas fa-angle-right"></i> {{ text_special }}</a></li>
+			</ul>
+		  </div>
+      </div>
+	  
+      <div class="f-links col-md-3 col-sm-6 col-3 d-flex justify-content-center">
+		  <div>
+			<h5>{{ text_account }}</h5>
+			<div class="title-divider"></div>
+			<ul class="list-unstyled">
+			  <li><a href="{{ account }}"><i class="fas fa-angle-right"></i> {{ text_account }}</a></li>
+			  <li><a href="{{ order }}"><i class="fas fa-angle-right"></i> {{ text_order }}</a></li>
+			  <li><a href="{{ wishlist }}"><i class="fas fa-angle-right"></i> {{ text_wishlist }}</a></li>
+			  <li><a href="{{ newsletter }}"><i class="fas fa-angle-right"></i> {{ text_newsletter }}</a></li>
+			</ul>
+		  </div>	
+      </div>
+	  
+	<div class="f-social">
+		<ul class="list-unstyled">
+			<li class="facebook"><a href="https://www.facebook.com/{{ facebook }}"><i class="fab fa-facebook-f"></i></a></li>
+			<li class="instagram"><a href="https://wwww.instagram.com/{{ instagram }}"><i class="fab fa-instagram"></i></a></li>
+			<li class="twitter"><a href="https://www.twitter.com/{{ twitter }}"><i class="fab fa-twitter"></i></a></li>
+			<li class="youtube"><a href="https://www.youtube.com/{{ youtube }}"><i class="fab fa-youtube"></i></a></li>
+			<li class="linkedin"><a href="https://wwww.linkedin.com/in{{ linkedin }}"><i class="fab fa-linkedin"></i></a></li>
+			<li class="pinterest"><a href="https://www.pinterest.com/{{ pinterest }}"><i class="fab fa-pinterest"></i></a></li>
+		</ul>
+	</div>	 
+	
+    </div>
+    <hr>
+
+    <p class="text-center">{{ powered }}</p>
+
+  <div id="wp_callback">
+		<div class="wp_circle"></div>
+		<div class="wp_circle_fill"></div>
+		<a href="https://api.whatsapp.com/send?phone={{ whatsapp_phone }}&amp;text=Hello," class="main-button">
+			<i class="fab fa-whatsapp"></i>
+		</a>
+	</div>
+
+  <div id="insta_callback">
+		<div class="insta_circle"></div>
+		<div class="insta_circle_fill"></div>
+		<a href="https://www.instagram.com/{{ instagram }}/" class="main-button">
+			<i class="fab fa-instagram"></i>
+		</a>
+	</div>
+
+  <button class="scroll-top" style="display: block;"><i class="fa fa-angle-double-up"></i></button>
+
+    <!--
+OpenCart is open source software and you are free to remove the powered by OpenCart if you want, but its generally accepted practise to make a small donation.
+Please donate via PayPal to donate@opencart.com
+//-->
+  </div>
+</footer>
+{{ cookie }}
+<script>
+
+
+const button = document.querySelector('.scroll-top');
+
+const displayButton = () => {
+  window.addEventListener('scroll', () => {
+  
+    if (window.scrollY > 500) {
+      button.style.display = "block";
+    } else {
+      button.style.display = "none";
+    }
+  });
+};
+
+const scrollToTop = () => {
+  button.addEventListener("click", () => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    }); 
+    console.log(event);
+  });
+};
+
+displayButton();
+scrollToTop();
+
+
+
+</script>
+
+<script src="{{ bootstrap }}" type="text/javascript"></script>
+{% for script in scripts %}
+  <script src="{{ script.href }}" type="text/javascript"></script>
+{% endfor %}
+</body></html>

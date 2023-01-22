@@ -1,0 +1,47 @@
+<h2 class="modTitle">{{ heading_title }}</h2>
+<div class="title-divider"></div>
+
+<div class="container">
+    <div class="swiper featured-slide">
+      <div class="swiper-wrapper">
+       
+        {% for product in products %}
+          <div class="swiper-slide">{{ product }}</div>
+        {% endfor %}
+    
+      </div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>	  
+    </div>
+</div>
+ 
+
+ <script>
+      var swiper = new Swiper(".featured-slide", {
+        slidesPerView: 2,
+        spaceBetween: 10,
+        loop : true,
+		speed: 2000,
+        breakpoints: {
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+          },
+        },
+		  navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev',
+		  },
+		 autoplay: {
+		   delay: 500,
+		 },		  
+      });
+</script>

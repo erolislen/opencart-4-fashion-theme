@@ -1,0 +1,107 @@
+
+
+{% if categories %}
+  <div class="hidden-xs">
+<nav class="navbar navbar-expand-lg navbar-light" id="menu">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- Toggle button -->
+    <button class="navbar-toggler px-0" type="button" data-mdb-toggle="collapse"
+      data-mdb-target="#category" aria-controls="category" aria-expanded="false" aria-label="Toggle navigation"> <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="category">
+      <!-- Left links -->
+      <ul class="navbar-nav m-auto ps-lg-0" style="padding-left: 0.15rem">
+        <li class="nav-item"> <a class="nav-link" href="/">Home</a> </li>
+        <!-- Navbar dropdown -->
+		{% for category in categories %}
+            {% if category.children %}
+        <li class="nav-item dropdown dropdown-hover position-static">
+          <a class="nav-link dropdown-toggle" href="{{ category.href }}" id="navbarDropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+            {{ category.name }}</a>
+          <!-- Dropdown menu -->
+          <div class="dropdown-menu w-100 mt-0" aria-labelledby="navbarDropdown" style="border-top-left-radius: 0; border-top-right-radius: 0; ">
+
+            <div class="container">
+			{% for children in category.children|batch(category.children|length / category.column|round(1, 'ceil')) %}
+              <div class="row my-1 justify-content-center">
+			  {% for child in children %}
+                <div class="col-md-6 col-lg-4">
+                  <div class="list-group list-group-flush">
+                    <a href="{{ child.href }}" class="list-group-item list-group-item-action">{{ child.name }}</a>
+                  </div>
+                </div>
+				{% endfor %}
+              </div>
+			  {% endfor %}
+			  <a href="{{ category.href }}" class="see-all d-block w-100 text-center my-1 py-2">{{ text_all }} {{ category.name }}</a>
+            </div>
+          </div>
+        </li>
+		{% else %}
+		<li class="nav-item"> <a class="nav-link" href="{{ category.href }}">{{ category.name }}</a> </li>
+		{% endif %}
+        {% endfor %}
+      </ul>
+      <!-- Left links -->
+    </div>
+    <!-- Collapsible wrapper -->
+  </div>
+  <!-- Container wrapper -->
+</nav>
+  </div>
+  
+  <div class="hidden-lg">
+    <nav id="menu" class="navbar navbar-expand-lg navbar-light">
+      <!--<div id="category" class="d-block d-sm-block d-lg-none">{{ text_category }}</div>-->
+	  <button class="openbtn" onclick="openNav()">☰</button> 
+	  
+      <div id="mySidepanel" class="sidepanel">
+        <ul class="nav navbar-nav">
+		<span>MENU</span>
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+          <li><a href="/" class="nav-link">Home</a></li>
+          {% for category in categories %}
+            {% if category.children %}
+				<div class="accordion accordion-flush" id="subcategories">
+				  <div class="accordion-item">
+					<h2 class="accordion-header" id="flush-headingOne">
+					  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">{{ category.name }}</button>
+					</h2>
+					<div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#subcategories">
+					  <div class="accordion-body">
+						{% for children in category.children|batch(category.children|length / category.column|round(1, 'ceil')) %}
+						  <ul class="list-unstyled">
+							{% for child in children %}
+							  <li><a href="{{ child.href }}" class="nav-link">{{ child.name }}</a></li>
+							{% endfor %}
+						  </ul>
+						{% endfor %}
+					  </div>
+					  <a href="{{ category.href }}" class="see-all">{{ text_all }} {{ category.name }}</a>
+					  </div>
+					</div>
+				  </div>
+            {% else %}
+              <li class="nav-item"><a href="{{ category.href }}" class="nav-link">{{ category.name }}</a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </nav>
+  </div>  
+{% endif %}
+<script>
+function openNav() {
+  document.getElementById("mySidepanel").style.width = "90%";
+}
+
+function closeNav() {
+  document.getElementById("mySidepanel").style.width = "0";
+}
+</script>
+
+
+

@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="swiper category-slide">
+      <div class="swiper-wrapper">
+        {% for category in categories %}
+           <div class="swiper-slide"><a href="{{category.href}}">
+            <img src="{{category.image}}" alt="{{category.name}}">
+            <p class="catTitle">{{category.name}}</p>
+          </a>
+      </div>
+      {% endfor %}      
+      </div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>	  
+    </div>
+</div>
+ 
+
+
+ <script>
+      var swiper = new Swiper(".category-slide", {
+        slidesPerView: 3,
+        spaceBetween: 10,
+        loop : true,
+		    speed: 2000,
+        breakpoints: {
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 10,
+          },
+          1024: {
+            slidesPerView: 6,
+            spaceBetween: 20,
+          },
+        },
+		  navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev',
+		  },
+		 autoplay: {
+		   delay: 500,
+		 },		  
+      });
+</script>

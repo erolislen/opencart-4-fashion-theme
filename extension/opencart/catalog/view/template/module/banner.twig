@@ -1,0 +1,87 @@
+<div class="top-slider">
+
+    <div id="banner{{ module }}" class="swiper mySwiper2">
+      <div class="swiper-wrapper">
+      {% for banner in banners %}
+        <div class="swiper-slide">
+          {% if banner.link %}
+            <a href="{{ banner.link }}"><img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-fluid"/></a>
+          {% else %}
+            <img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-fluid"/>
+          {% endif %}
+        </div>
+      {% endfor %}
+      </div>
+	  
+	  {% if controls and banners|batch(items)|length > 1 %}
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+	  <div class="swiper-pagination"></div>
+	  {% endif %}
+    </div>
+	
+    <div thumbsSlider="" class="swiper mySwiper">
+      <div class="swiper-wrapper">
+	  {% for banner in banners %}
+        <div class="swiper-slide">
+          <img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-fluid"/>
+        </div>
+		{% endfor %}
+      </div>
+    </div>
+	
+</div>
+
+<script>
+      var swiper = new Swiper(".mySwiper", {
+	    
+        spaceBetween: 10,
+        slidesPerView: 6,
+        freeMode: true,
+        watchSlidesProgress: true,
+      });
+      var swiper2 = new Swiper(".mySwiper2", {
+        spaceBetween: 10,
+		centeredSlides: true,
+		speed:1000,
+        grabCursor: true,
+		loop: true,
+		
+        autoplay: {
+          delay: {{interval}},
+          disableOnInteraction: false,
+        },
+		
+        effect: "creative",
+        creativeEffect: {
+          prev: {
+            shadow: true,
+            translate: ["-20%", 0, -1],
+          },
+          next: {
+            translate: ["100%", 0, 0],
+          },
+        },
+		
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+		
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+          renderBullet: function (index, className) {
+            return '<span class="' + className + '">' + (index + 1) + "</span>";
+          },
+        },
+		
+        thumbs: {
+          swiper: swiper,
+        },
+      });
+    </script>
+	
+	
+
+
