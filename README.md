@@ -1,4 +1,6 @@
-# Opencart 4 Fashion Theme
+[![](https://opencart.erolislen.com.tr/image/catalog/github-image-2.png)](https://opencart.erolislen.com.tr)
+
+# BELERO - Fashion Responsive Opencart 4 Theme
 
 ### Newly Added features
 
