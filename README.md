@@ -23,5 +23,13 @@
 
 ### How it looks like
 
-**Link 1** : https://opencart.erolislen.com.tr/
-**Link 2** : https://nrrxkp.wmcoder.com/
+- **Link 1** : https://opencart.erolislen.com.tr/
+- **Link 2** : https://nrrxkp.wmcoder.com/
+
+### Installation
+
+- Download the files in .zip format.
+- Extract the files from the zip.
+- Follow the Opencart installation steps.
+
+Opencart installation link : http://docs.opencart.com/en-gb/installation/
