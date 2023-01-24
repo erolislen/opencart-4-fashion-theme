@@ -25,8 +25,7 @@
 
 ### How it looks like
 
-- **Link 1** : https://opencart.erolislen.com.tr/
-- **Link 2** : https://nrrxkp.wmcoder.com/
+- **Link 1** : https://nrrxkp.wmcoder.com/ 
 
 ### Installation
 
